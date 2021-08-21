@@ -193,7 +193,7 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 }
 h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
 	background: none;
-	color: #555;
+	color: var(--color-secondary);
 	font-family: "Tahoma", sans-serif;
 	font-weight: bold;
 	overflow: hidden;
@@ -202,7 +202,7 @@ h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
 }
 .titlebg a, .subbg a {
 	background: none;
-	color: #555;
+	color: var(--color-secondary);
 	text-decoration: none;
 }
 .title_bar + .windowbg, .title_bar + .roundframe {

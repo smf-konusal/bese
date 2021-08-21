@@ -5,7 +5,7 @@ html {
 body {
 	background: var(--color-default-satur);
 	font: 83.33%/150% "Segoe UI", "Helvetica Neue", "Nimbus Sans L", Arial, "Liberation Sans", sans-serif;
-	color: #4d4d4d;
+	color: var(--color-base);
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;

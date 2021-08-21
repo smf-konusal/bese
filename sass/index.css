@@ -1,3 +1,7 @@
+/* 
+    Huu Team By Bese Theme - Sass files : https://github.com/smf-konusal/bese
+    By https://smf.konusal.com/
+    */
 :root {
   --color-base: rgba(0, 0, 0, 0.6);
   --color-default-h: 144.90566deg;
@@ -28,7 +32,7 @@ html {
 body {
   background: var(--color-default-satur);
   font: 83.33%/150% "Segoe UI", "Helvetica Neue", "Nimbus Sans L", Arial, "Liberation Sans", sans-serif;
-  color: #4d4d4d;
+  color: var(--color-base);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,7 +306,7 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 
 h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
   background: none;
-  color: #555;
+  color: var(--color-secondary);
   font-family: "Tahoma", sans-serif;
   font-weight: bold;
   overflow: hidden;
@@ -312,7 +316,7 @@ h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
 
 .titlebg a, .subbg a {
   background: none;
-  color: #555;
+  color: var(--color-secondary);
   text-decoration: none;
 }
 
@@ -1329,7 +1333,7 @@ ul li.greeting {
 #footer {
   margin: 4em 0 0 0;
   padding: 10px 0;
-  background: var(--color-default);
+  background: var(--color-secondary);
   border-top: 3px solid var(--color-primary);
   -webkit-box-flex: 0;
       -ms-flex: none;

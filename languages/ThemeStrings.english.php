@@ -1,6 +1,6 @@
 <?php
 
-$txt['themecopyright'] = ' <strong>Bese Theme By Huu</strong>';
+$txt['themecopyright'] = ' <strong>Bese Theme By <a href="https://smf.konusal.com/">Cee</a></strong>';
 
 
 $txt['bese_color_default'] = 'bese_color_default';
