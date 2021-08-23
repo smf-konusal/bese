@@ -59,3 +59,31 @@ function smf_addButton(stripId, image, options)
 		'</a>'
 	);
 }
+
+function toggleDarkMode(element) {
+	if (typeof bese_dark_mode_toggle_var === 'undefined' || typeof smf_member_id === 'undefined' || smf_member_id === 0)
+		return;
+
+	$(element).before('<div class="sk-chase"><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div></div>');
+
+	var data = {
+		"default_options[bese_dark_mode]": bese_dark_mode == 1 ? 0 : 1,
+		u: smf_member_id,
+		sa: "theme",
+		save: 1,
+	};
+	data[bese_dark_mode_toggle_var] = bese_dark_mode_toggle;
+	data[smf_session_var] = smf_session_id;
+
+	$.ajax({
+		method: "POST",
+		url: smf_scripturl + '?action=profile;area=theme',
+		contentType: "application/x-www-form-urlencoded",
+		data,
+		success() {
+			location.reload();
+		},
+	});
+
+	return false;
+}

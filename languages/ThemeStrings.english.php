@@ -1,6 +1,6 @@
 <?php
 
-$txt['themecopyright'] = ' <strong>Bese Theme By <a href="https://smf.konusal.com/">Cee</a></strong>';
+$txt['themecopyright'] = ' <strong>Bese Theme By <a href="https://smf.konusal.com/" target="_blank">Cee</a></strong>';
 
 
 $txt['bese_color_default'] = 'bese_color_default';
@@ -14,6 +14,8 @@ $txt['bese_color_defaulte'] = 'Default is: %color%';
 $txt['bese_default_mode'] = 'Default Mode';
 $txt['bese_dark_mode'] = 'Dark Mode';
 $txt['bese_light_mode'] = 'Light Mode';
-$txt['bese_theme_settings'] = 'Theme Settings';
+$txt['bese_theme_settings'] = 'Bese Theme Settings';
+
+$txt['bese_allow_user_modes'] = 'bese_allow_user_modes';
 
 ?>

@@ -3,7 +3,7 @@ html {
 	background: var(--color-default);
 }
 body {
-	background: var(--color-default-satur);
+	background: var(--color-secondary-lighte);
 	font: 83.33%/150% "Segoe UI", "Helvetica Neue", "Nimbus Sans L", Arial, "Liberation Sans", sans-serif;
 	color: var(--color-base);
 	display: flex;
@@ -27,4 +27,11 @@ hr {
 	height: 2px;
 	background: #fff;
 	box-shadow: 0 1px 0 #bbb inset;
+}
+strong, .strong {
+	font-weight: bold;
+	color: var(--color-base);
+}
+.cat_bar strong {
+	color: #fff;
 }

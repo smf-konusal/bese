@@ -136,13 +136,7 @@ summary {
 /* Define strong as bold, and em as italics */
 /* Note: in some particular places, strong has been redefined as font-weight: 600; */
 /* This gives a better effect for those areas, and will default to bold for fonts which do not support numerical font-weight */
-strong, .strong {
-	font-weight: bold;
-	color: #444;
-}
-.cat_bar strong {
-	color: #fff;
-}
+
 em, .em {
 	font-style: italic;
 }

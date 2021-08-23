@@ -83,6 +83,8 @@ function template_init()
 		define('DEFAULT_BESE_COLOR_SECONDARY', '#444361');
 	}
 
+	require_once __DIR__."/tema/huu.php";
+
 }
 /**
  * The main sub template above the content.
@@ -91,7 +93,7 @@ function template_init()
 
 function template_html_above()
 {
-	global $context, $scripturl, $txt, $modSettings;
+	global $context, $scripturl, $txt, $modSettings, $settings;
 
 	// Show right to left, the language code, and the character set for ease of translating.
 	echo '<!DOCTYPE html>
@@ -124,12 +126,8 @@ function template_html_above()
 			If you want to load CSS or JS files in here, the best way is to use the
 			'integrate_load_theme' hook for adding multiple files, or using
 			'integrate_pre_css_output', 'integrate_pre_javascript_output' for a single file.
-	*/
+	*/	
 
-
-	add_integration_function('integrate_load_theme', addCustomColorVars(), false);
-
-	//echo '<link rel="stylesheet" href="'.$settings['theme_url'].'/sass/index.css">';
 
 	// load in any css from mods or themes so they can overwrite if wanted
 	template_css();
@@ -156,7 +154,7 @@ function template_html_above()
 	/*	What is your Lollipop's color?
 		Theme Authors, you can change the color here to make sure your theme's main color gets visible on tab */
 	echo '
-	<meta name="theme-color" content="#557EA0">';
+	<meta name="theme-color" content="',!empty($settings['bese_color_default']) ? $settings['bese_color_default'] : DEFAULT_BESE_COLOR,'">';
 
 	// Please don't index these Mr Robot.
 	if (!empty($context['robot_no_index']))
@@ -200,8 +198,9 @@ function template_html_above()
 	echo '
 </head>
 <body id="', $context['browser_body_id'], '" class="action_', !empty($context['current_action']) ? $context['current_action'] : (!empty($context['current_board']) ?
-		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '">
+		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', ' ',\HUU\Bese::current_mode(),'-mode">
 <div id="footerfix">';
+
 }
 
 /**
@@ -270,6 +269,8 @@ function template_body_above()
 			<ul class="floatleft welcome">
 				<li>', sprintf($txt['welcome_guest'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return true;'), '</li>
 			</ul>';
+
+	echo '<div id="current_mode" class="floatright button"><a href="javascript:void(0)" onclick="toggleDarkMode(this)">'.\HUU\Bese::current_mode().'</a></div>';
 
 	if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
 	{
@@ -434,11 +435,6 @@ function template_body_below()
 
 }
 
-function theme_huu(){
-	global $txt;
-
-	return $txt['themecopyright'];
-}
 /**
  * This shows any deferred JavaScript and closes out the HTML
  */
@@ -596,7 +592,7 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 	// Create the buttons...
 	$buttons = array();
 
-	inject_buttonlist_icons($button_strip);
+	inject_buttonlist_icons_bese($button_strip);
 
 
 	foreach ($button_strip as $key => $value)
@@ -646,37 +642,6 @@ function template_button_strip($button_strip, $direction = '', $strip_options = 
 			', implode('', $buttons), '
 		</div>';
 }
-
-function inject_buttonlist_icons(&$button_strip)
-{
-	$icons = array(
-		'reply' => 'reply_button',
-		'add_poll' => 'poll',
-		'notify' => 'notify_button',
-		'print' => 'inbox',
-		'mark_unread' => 'read_button',
-		'move' => 'move',
-		'delete' => 'delete',
-		'lock' => 'lock',
-		'unlock' => 'lock',
-		'sticky' => 'sticky',
-		'merge' => 'merge',
-		'post_poll' => 'poll',
-		'new_topic' => 'topics_replies',
-		'markread' => 'read_button',
-		'calendar' => 'calendar',
-	);
-
-	foreach ($icons as $button_key => $icon)
-	{
-		if (!isset($button_strip[$button_key]))
-			continue;
-
-		$button_strip[$button_key]['icon'] = $icon;
-	}
-}
-
-
 /**
  * Generate a list of quickbuttons.
  *
@@ -797,89 +762,6 @@ function template_maint_warning_above()
 function template_maint_warning_below()
 {
 
-}
-
-
-function addCustomColorVars()
-	{
-		global $settings;
-
-		$color_key = 'bese_color_';
-		$colors = array();
-
-		foreach ($settings as $key => $setting)
-		{
-			if (substr($key, 0, strlen($color_key)) !== $color_key || empty($setting))
-				continue;
-
-			$color_name = str_replace(
-				array('bese_', '_'),
-				array('', '-'),
-				$key
-			);
-
-			$hsl = huu_hex_to_hsl($setting);
-			$colors["--$color_name-h"] = $hsl[0] . 'deg';
-			$colors["--$color_name-s"] = $hsl[1] * 100 . '%';
-			$colors["--$color_name-l"] = $hsl[2] * 100 . '%';
-			$colors["--$color_name"] = "hsl(var(--$color_name-h), var(--$color_name-s), var(--$color_name-l))";
-		}
-
-		$css = '';
-
-		foreach ($colors as $color => $value)
-			$css .= "$color: $value;\n";
-
-		addInlineCss(":root {{$css}}");
-	}
-
-function huu_hex_to_hsl($hex)
-{
-	$hex = str_split(ltrim($hex, '#'), 2);
-
-	$rgb = array_map(function($part) {
-		return hexdec($part) / 255;
-	}, $hex);
-
-	$min = min($rgb);
-	$max = max($rgb);
-
-	// Initialize all to 0
-	$h = $s = $l = 0;
-
-	// calculate the luminace value by adding the max and min values and divide by 2
-	$l = ($min + $max) / 2;
-
-	// If $max and $min are unequal, we need to calculate the saturation and hue
-	if ($max !== $min)
-	{
-		// Saturation
-		if ($l < 0.5)
-			$s = ($max - $min) / ($max + $min);
-		else
-			$s = ($max - $min) / (2 - $max - $min);
-
-		// Hue
-		switch ($max)
-		{
-			case $rgb[0]:
-				$h = ($rgb[1] - $rgb[2]) / ($max - $min);
-				break;
-			case $rgb[1]:
-				$h = 2 + ($rgb[2] - $rgb[0]) / ($max - $min);
-				break;
-			case $rgb[2]:
-				$h = 4 + ($rgb[0] - $rgb[1]) / ($max - $min);
-		}
-
-		// Convert the Hue to degrees
-		$h *= 60;
-
-		if ($h < 0)
-			$h += 360;
-	}
-
-	return array($h, $s, $l);
 }
 
 ?>

@@ -261,6 +261,12 @@ function template_settings()
 			),
 			'type' => 'list',
 		),
+		array(
+			'id' => 'bese_allow_user_modes',
+			'label' => $txt['bese_allow_user_modes'],
+			'default_value' => 1,
+			'type' => 'checkbox',
+		),
 
 	);
 }

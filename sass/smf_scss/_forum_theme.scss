@@ -8,7 +8,7 @@
 .button, .quickbuttons > li > a, .inline_mod_check {
 	display: inline-block;
 	padding: 0 8px;
-	color: var(--color-primary-lighte);
+	color: var(--color-secondary-satur);
 	font-size: 0.7rem;
 	line-height: 2em;
 	text-transform: uppercase;
@@ -33,7 +33,8 @@
 	text-decoration: none;
 }
 .button:hover, .button:focus {
-	color: var(--color-primary-satur);
+	color: var(--color-primary-lighte);
+	border-color: var(--color-secondary-satur);
 }
 /* the active one */
 .button.active {
@@ -75,10 +76,10 @@
 }
 /* Here comes the glory... */
 .windowbg:nth-of-type(even), .bg.even {
-	background: #f0f4f7;
+	background: var(--color-default);
 }
 .windowbg:nth-of-type(odd), .bg.odd {
-	background: #fdfdfd;
+	background: var(--color-default-lighte);
 }
 
 /* Add some hover on table rows */
