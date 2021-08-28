@@ -5,6 +5,11 @@
 @import "function";
 @import "variables";
 
+/*Theme On Sass List */
+@import "bese_theme/theme";
+@import "bese_theme/forum_theme";
+
+/*Default Smf Theme Sass Files List*/
 @import "smf_scss/base";
 @import "smf_scss/forum_theme";
 @import "smf_scss/generic_icon";

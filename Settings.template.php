@@ -231,6 +231,12 @@ function template_settings()
 		),
 		'',
 		array(
+			'id' => 'bese_allow_color_select',
+			'label' => $txt['bese_allow_color_select'],
+			'default_value' => 0,
+			'type' => 'checkbox',
+		),
+		array(
 			'id' => 'bese_color_default',
 			'label' => $txt['bese_color_default'],
 			'description' => str_replace('%color%', DEFAULT_BESE_COLOR, $txt['bese_color_defaulte']),

@@ -45,6 +45,30 @@
   --color-secondary-satur: hsl(var(--color-default-h), var(--color-default-s), calc(var(--color-default-l) * 4.2));
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-default-h: 242deg;
+    --color-default-s: 18.29268%;
+    --color-default-l: 32.15686%;
+    --color-default: hsl(var(--color-default-h), var(--color-default-s), var(--color-default-l));
+    --color-default-lighte: hsl(var(--color-secondary-h), calc(var(--color-secondary-s) * 1.2), var(--color-secondary-l));
+    --color-default-satur: hsl(var(--color-secondary-h), var(--color-secondary-s), calc(var(--color-secondary-l) * 2.7));
+    --color-primary-h: 261.17647deg;
+    --color-primary-s: 33.86454%;
+    --color-primary-l: 50.78431%;
+    --color-primary: hsl(var(--color-primary-h), var(--color-primary-s), var(--color-primary-l));
+    --color-primary-lighte: hsl(var(--color-primary-h), calc(var(--color-primary-s) * 0.6), var(--color-primary-l));
+    --color-primary-satur: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) * 4.2));
+    --color-secondary-h: 144.90566deg;
+    --color-secondary-s: 43.08943%;
+    --color-secondary-l: 75.88235%;
+    --color-secondary: hsl(var(--color-secondary-h), var(--color-secondary-s), var(--color-secondary-l));
+    --color-secondary-lighte: hsl(var(--color-default-h), calc(var(--color-default-s) * 0.6), var(--color-default-l));
+    --color-secondary-satur: hsl(var(--color-default-h), var(--color-default-s), calc(var(--color-default-l) * 4.2));
+  }
+}
+
+/*Theme On Sass List */
 #current_mode {
   margin: 5px;
   display: -webkit-box;
@@ -192,6 +216,12 @@
   }
 }
 
+#recent_posts_content {
+  background: var(--color-secondary-lighte);
+  margin-bottom: 10px;
+}
+
+/*Default Smf Theme Sass Files List*/
 /* Index */
 html {
   background: var(--color-default);
@@ -213,13 +243,13 @@ body {
 
 ::-moz-selection {
   text-shadow: none;
-  background: var(--color-default-lighte);
+  background: var(--color-primary);
   color: var(--color-base);
 }
 
 ::selection {
   text-shadow: none;
-  background: var(--color-default-lighte);
+  background: var(--color-primary);
   color: var(--color-base);
 }
 
@@ -317,13 +347,13 @@ strong, .strong {
 }
 
 .generic_list_wrapper, .windowbg, .approvebg, .approvebg2 {
-  background: #f0f4f7;
+  background: var(--color-primary-lighte);
   margin: 12px 0 0 0;
   padding: 12px 16px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-default);
   border-radius: 6px;
-  -webkit-box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 -2px 2px var(--color-default-satur);
+          box-shadow: 0 -2px 2px var(--color-default-satur);
   overflow: auto;
 }
 
@@ -352,17 +382,17 @@ strong, .strong {
 
 /* Add some hover on table rows */
 tr.windowbg:hover {
-  background: #e2eef8;
+  background: var(--color-primary-lighte);
 }
 
 /* Nobody wants locked topics to stand out much. */
 .windowbg.locked {
-  background: #e7eaef;
+  background: var(--color-primary);
 }
 
 /* Sticky topics get a different background */
 .windowbg.sticky {
-  background: #cfdce8;
+  background: var(--color-primary);
 }
 
 /* Locked AND sticky are a bit more technical */
@@ -483,7 +513,7 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 }
 
 h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
-  background: none;
+  background: var(--color-default-lighte);
   color: var(--color-secondary);
   font-family: "Tahoma", sans-serif;
   font-weight: bold;
@@ -547,6 +577,30 @@ h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
   background: #fff;
   background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-default)), color-stop(95%, var(--color-primary)));
   background-image: linear-gradient(to bottom, var(--color-default) 0%, var(--color-primary) 95%);
+}
+
+/* Information */
+.information {
+  background: var(--color-default);
+  overflow: auto;
+  padding-bottom: .5em;
+  border: 1px solid var(--color-default-satur);
+  border-top: none;
+  border-radius: 0 0 7px 7px;
+  margin: 0 0 10px 0;
+  padding: 12px 9px 8px 9px;
+}
+
+.inner {
+  padding: 7px 8px 2px 2px;
+  margin: 0;
+  border-top: 1px solid var(--color-default-satur);
+  -webkit-box-shadow: 0 1px 0 var(--color-primary) inset;
+          box-shadow: 0 1px 0 var(--color-primary) inset;
+  min-height: 85px;
+  word-wrap: break-word;
+  /* IE fallback */
+  overflow-wrap: break-word;
 }
 
 /* Some lovely generic icons.
@@ -1605,7 +1659,7 @@ ul li.greeting {
   padding: 0 10px;
   font-size: 0.9em;
   overflow: hidden;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-primary);
   border-radius: 2px;
   -webkit-box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.08);
           box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.08);
@@ -1631,7 +1685,7 @@ ul li.greeting {
 }
 
 .navigate_section ul li .dividers {
-  color: #3f6b8c;
+  color: var(--color-default);
   font: 83.33%/150% Arial, sans-serif;
   padding: 0 2px 0 6px;
 }

@@ -17,5 +17,10 @@ $txt['bese_light_mode'] = 'Light Mode';
 $txt['bese_theme_settings'] = 'Bese Theme Settings';
 
 $txt['bese_allow_user_modes'] = 'bese_allow_user_modes';
+$txt['bese_allow_color_select'] = 'bese_allow_color_select';
+
+$txt['default_bese_color'] = '#a7dcbd';
+$txt['default_bese_primary'] = '#7557ac';
+$txt['default_bese_secondary'] = '#444361';
 
 ?>

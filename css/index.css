@@ -2285,15 +2285,6 @@ img.avatar {
 	opacity: 0.4;
 	padding: 2px 0 0 4px;
 }
-.inner {
-	padding: 7px 8px 2px 2px;
-	margin: 0;
-	border-top: 1px solid #bfbfbf;
-	box-shadow: 0 1px 0 #fff inset;
-	min-height: 85px;
-	word-wrap: break-word; /* IE fallback */
-	overflow-wrap: break-word;
-}
 img.smiley {
 	vertical-align: bottom;
 }
@@ -2524,17 +2515,6 @@ ul.post_options li {
 
 
 /* Other */
-/* Information */
-.information {
-	background: var(--color-default-lighte);
-	overflow: auto;
-	padding-bottom: .5em;
-	border: 1px solid #ddd;
-	border-top: none;
-	border-radius: 0 0 7px 7px;
-	margin: 0 0 10px 0;
-	padding: 12px 9px 8px 9px;
-}
 .generic_list_wrapper .information div {
 	background: none;
 }

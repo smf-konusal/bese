@@ -72,18 +72,21 @@ function template_init()
 	if (!isset($settings['disable_files']))
 		$settings['disable_files'] = array();
 
+	// Load themes Settings Bese
+	require_once __DIR__."/tema/huu.php";
+
+	loadLanguage('ThemeStrings');
+	
 	if (!defined('DEFAULT_BESE_COLOR')){
-		define('DEFAULT_BESE_COLOR', '#a7dcbd');
+		define('DEFAULT_BESE_COLOR', $txt['default_bese_color']);
 	}
 
 	if (!defined('DEFAULT_BESE_COLOR_PRIMARY')){
-		define('DEFAULT_BESE_COLOR_PRIMARY', '#7557ac');
+		define('DEFAULT_BESE_COLOR_PRIMARY', $txt['default_bese_primary']);
 	}
 	if (!defined('DEFAULT_BESE_COLOR_SECONDARY')){
-		define('DEFAULT_BESE_COLOR_SECONDARY', '#444361');
+		define('DEFAULT_BESE_COLOR_SECONDARY', $txt['default_bese_secondary']);
 	}
-
-	require_once __DIR__."/tema/huu.php";
 
 }
 /**
@@ -270,7 +273,9 @@ function template_body_above()
 				<li>', sprintf($txt['welcome_guest'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return true;'), '</li>
 			</ul>';
 
-	echo '<div id="current_mode" class="floatright button"><a href="javascript:void(0)" onclick="toggleDarkMode(this)">'.\HUU\Bese::current_mode().'</a></div>';
+	if(!empty($settings['bese_allow_user_modes']) != 0){
+		echo '<div id="current_mode" class="floatright button"><a href="javascript:void(0)" onclick="toggleDarkMode(this)">'.\HUU\Bese::current_mode().'</a></div>';
+	}
 
 	if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
 	{
