@@ -74,8 +74,6 @@ function template_init()
 
 	// Load themes Settings Bese
 	require_once __DIR__."/tema/huu.php";
-
-	loadLanguage('ThemeStrings');
 	
 	if (!defined('DEFAULT_BESE_COLOR')){
 		define('DEFAULT_BESE_COLOR', $txt['default_bese_color']);
