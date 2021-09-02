@@ -15,6 +15,14 @@
     #{$color}: unquote("hsl(#{var(#{$color}-h)}, #{var(#{$color}-s)}, #{var(#{$color}-l)})");
 }
 
+@mixin defineColorHSL_dark($color, $renk){
+  $hue : hue($renk);
+  $saturation : saturation($renk);
+  $lightness : lightness($renk)-15;
+  #{$color}-h: #{$hue};#{$color}-s: #{$saturation};#{$color}-l: #{$lightness};
+  #{$color}: unquote("hsl(#{var(#{$color}-h)}, #{var(#{$color}-s)}, #{var(#{$color}-l)})");
+}
+
 @function lighte($color, $lightnessMultiplier){
   $color: str-replace($color, 'var(');
   $color: str-replace($color, ')');

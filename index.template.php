@@ -74,16 +74,16 @@ function template_init()
 
 	// Load themes Settings Bese
 	require_once __DIR__."/tema/huu.php";
-	
+
 	if (!defined('DEFAULT_BESE_COLOR')){
-		define('DEFAULT_BESE_COLOR', $txt['default_bese_color']);
+		define('DEFAULT_BESE_COLOR', '#a7dcbd');
 	}
 
 	if (!defined('DEFAULT_BESE_COLOR_PRIMARY')){
-		define('DEFAULT_BESE_COLOR_PRIMARY', $txt['default_bese_primary']);
+		define('DEFAULT_BESE_COLOR_PRIMARY', '#7557ac');
 	}
 	if (!defined('DEFAULT_BESE_COLOR_SECONDARY')){
-		define('DEFAULT_BESE_COLOR_SECONDARY', $txt['default_bese_secondary']);
+		define('DEFAULT_BESE_COLOR_SECONDARY', '#444361');
 	}
 
 }
@@ -271,7 +271,7 @@ function template_body_above()
 				<li>', sprintf($txt['welcome_guest'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return true;'), '</li>
 			</ul>';
 
-	if(!empty($settings['bese_allow_user_modes']) != 0){
+	if(!empty($settings['bese_allow_user_modes']) != 0 && $context['user']['is_logged']){
 		echo '<div id="current_mode" class="floatright button"><a href="javascript:void(0)" onclick="toggleDarkMode(this)">'.\HUU\Bese::current_mode().'</a></div>';
 	}
 
