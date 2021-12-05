@@ -87,6 +87,7 @@ class Bese {
 
 		addJavaScriptVar('bese_dark_mode_toggle_var', '"'.$context["{$token_name}_token_var"].'"');
 		addJavaScriptVar('bese_dark_mode_toggle', '"'.$context["{$token_name}_token"].'"');
-		addJavaScriptVar('bese_dark_mode', '"'.$options['bese_dark_mode'].'"');
+		if (isset($options['bese_dark_mode']))
+			addJavaScriptVar('bese_dark_mode', '"'.$options['bese_dark_mode'].'"');
 	}
 }

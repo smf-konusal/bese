@@ -447,8 +447,7 @@
 		overflow-y: scroll !important;
 		-webkit-overflow-scrolling: touch;
 		background: #fff; /* fallback for some browsers */
-		background-image: linear-gradient(to bottom, #e2e9f3 0%, #fff 70%);
-		top: 15%;
+		background-image: linear-gradient(to bottom, var(--color-primary) 0%, var(--color-default) 70%);		top: 15%;
 		padding: 0;
 		margin: 0 auto;
 	}

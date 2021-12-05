@@ -524,7 +524,7 @@ h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
 
 .titlebg a, .subbg a {
   background: none;
-  color: var(--color-secondary);
+  color: var(--color-secondary-satur);
   text-decoration: none;
 }
 
